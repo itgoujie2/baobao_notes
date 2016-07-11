@@ -1,0 +1,9 @@
+{
+	"name" : "baobao",
+	"dependencies" : {
+		"angular" : "latest",
+		"ui-route" : "latest",
+		"font-awesome" : "latest", 
+		"bootstrap" : "latest"
+	}
+}

@@ -1,0 +1,16 @@
+  
+    <div class="page-header">
+      <form ng-submit="searchInAll()">
+        <input type="text" ng-model="searchText"></input>
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
+    </div>
+    
+    <div ng-repeat="note in notes | filter:searchFilter()">
+      <span style="font-size:20px; margin-left:10px;" ui-sref="note({id: note._id})">{{note.title}}</span>
+      <span ng-if="note.matches">{{note.matches}}</span>
+    </div>
+    <form style="margin-top:30px;" ng-submit="addNote()">
+      <input type="textarea" ng-model="newNote.title"></input>
+      <button class="btn btn-primary" type="submit">Post</button>
+    </form>
