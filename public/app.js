@@ -22,7 +22,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
 
   $scope.notes = [];
   $scope.newNote = {};
-  $scope.searchText = 'tes';
+  $scope.searchText = '';
 
   notes.getAll().success(function(data){
     console.log('get all note: ' + JSON.stringify(data));
@@ -45,20 +45,27 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
       var counter = countOcurrences(item.content, $scope.searchText);
       console.log('item: ' + JSON.stringify(item) + ' counter: ' + counter);
       if (counter > 0){
-        return {
-          title: item.title, 
-          content: item.content, 
-          highlight: true, 
-          matches: counter
-        }
+        console.log('calling 1');
+        // return {
+        //   title: item.title, 
+        //   content: item.content, 
+        //   highlight: true, 
+        //   matches: counter
+        // }
+
+        item.matches = counter;
+        return item
       }
       else{
-        return {
-          title: item.title, 
-          content: item.content, 
-          highlight: false, 
-          matches: 0
-        }
+        console.log('calling 2');
+        // return {
+        //   title: item.title, 
+        //   content: item.content, 
+        //   highlight: false, 
+        //   matches: 0
+        // }
+        item.matches = 0;
+        return item
       }
 
     }
@@ -95,29 +102,33 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
 
     function helper(tracker, array){
       console.log('tracker: ' + tracker + ' item: ' + JSON.stringify(array[tracker]));
-      var counter = countOcurrences(array[tracker].content, $scope.searchText);
-      if (counter > 0){
-        searchResult = searchResult.concat({
-          title: array[tracker].title, 
-          content: array[tracker].content, 
-          highlight: true, 
-          matches: counter
-        })
-      }
-      else{
-        searchResult = searchResult.concat({
-          title: array[tracker].title, 
-          content: array[tracker].content, 
-          highlight: false, 
-          matches: 0
-        })  
-      }
 
-      console.log('tracker: ' + tracker + ' current result: ' + searchResult);
+      if (array[tracker] && array[tracker].content){
+        var counter = countOcurrences(array[tracker].content, $scope.searchText);
+        if (counter > 0){
+          searchResult = searchResult.concat({
+            title: array[tracker].title, 
+            content: array[tracker].content, 
+            highlight: true, 
+            matches: counter
+          })
+        }
+        else{
+          searchResult = searchResult.concat({
+            title: array[tracker].title, 
+            content: array[tracker].content, 
+            highlight: false, 
+            matches: 0
+          })  
+        }  
+      }
+      
+
+      console.log('tracker: ' + tracker + ' current result: ' + JSON.stringify(searchResult));
 
       if (tracker == array.length-1){
         $scope.notes = searchResult;
-        console.log('searchResult: ' + searchResult);
+        console.log('searchResult: ' + JSON.stringify(searchResult));
         // $scope.$apply();
         return;
       }
