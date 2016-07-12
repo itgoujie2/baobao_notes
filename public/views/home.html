@@ -7,7 +7,7 @@
     </div>
     
     <div ng-repeat="note in notes | filter:searchFilter()">
-      <span style="font-size:20px; margin-left:10px;" ui-sref="note({id: note._id})">{{note.title}}</span>
+      <span style="font-size:20px; margin-left:10px;" ui-sref="note({id: note._id, searchText: searchText})">{{note.title}}</span>
       <span ng-if="note.matches">{{note.matches}}</span>
     </div>
     <form style="margin-top:30px;" ng-submit="addNote()">

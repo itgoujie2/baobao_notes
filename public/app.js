@@ -10,7 +10,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       controller: 'HomeCtrl'
     })
     .state('note', {
-      url: '/notes/{id}', 
+      url: '/notes/{id}/{searchText}', 
       templateUrl: 'views/note.html', 
       controller: 'NoteCtrl'
     })
@@ -140,7 +140,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
 
   function countOcurrences(str, value){
      var regExp = new RegExp(value, "gi");
-     return str && str.match(regExp) ? str.match(regExp).length : 0;  
+     return value && str && str.match(regExp) ? str.match(regExp).length : 0;  
   }
   
 }]);
@@ -148,6 +148,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
 app.controller('NoteCtrl', function($scope, $stateParams, notes, comments){
   console.log('hitting NoteCtrl');
   console.log('note id: ' + $stateParams.id);
+  console.log('search text: ' + $stateParams.searchText);
   $scope.thisNote = {};
   $scope.comments = comments.comments;
   $scope.newComment = {};
@@ -156,7 +157,10 @@ app.controller('NoteCtrl', function($scope, $stateParams, notes, comments){
     // comments.getAll($stateParams.id).success(function(data){
     //   console.log(JSON.stringify(data));
     //   $scope.comments = $scope.comments.concat(data);
-    // });
+    // }); 
+    setTimeout(function(){
+      $('div').removeHighlight().highlight($stateParams.searchText);
+    }, 0)
   });
 
   $scope.updateNote = function(){

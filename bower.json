@@ -1,9 +1,12 @@
 {
-	"name" : "baobao",
-	"dependencies" : {
-		"angular" : "latest",
-		"ui-route" : "latest",
-		"font-awesome" : "latest", 
-		"bootstrap" : "latest"
-	}
+  "name": "baobao",
+  "dependencies": {
+    "angular": "latest",
+    "ui-route": "latest",
+    "font-awesome": "latest",
+    "bootstrap": "latest"
+  },
+  "resolutions": {
+    "jquery": "1.9.1 - 2"
+  }
 }
