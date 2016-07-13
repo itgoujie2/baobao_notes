@@ -1,1 +1,6 @@
 .highlight { background-color: yellow }
+
+#textbox{
+	height: 95vh;
+	width: 100vw;
+}
