@@ -1,2 +1,3 @@
-<textarea ng-model="thisNote.content"></textarea>
-<button ng-click="updateNote()">update</button>
+<div><span id="noteContent" ng-click="switchNoteArea()" ng-show="!switch"/>{{thisNote.content}}</div>
+<textarea ng-show="switch" ng-model="thisNote.content"></textarea>
+<button ng-click="updateNote()" ng-show="switch">update</button>

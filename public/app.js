@@ -146,26 +146,37 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
 }]);
 
 app.controller('NoteCtrl', function($scope, $stateParams, notes, comments){
-  console.log('hitting NoteCtrl');
-  console.log('note id: ' + $stateParams.id);
-  console.log('search text: ' + $stateParams.searchText);
+  // console.log('hitting NoteCtrl');
+  // console.log('note id: ' + $stateParams.id);
+  // console.log('search text: ' + $stateParams.searchText);
   $scope.thisNote = {};
   $scope.comments = comments.comments;
   $scope.newComment = {};
+  $scope.switch = false;
   $scope.note = notes.getNote($stateParams.id).success(function(data){
     $scope.thisNote = data;
     // comments.getAll($stateParams.id).success(function(data){
     //   console.log(JSON.stringify(data));
     //   $scope.comments = $scope.comments.concat(data);
     // }); 
+    
     setTimeout(function(){
-      $('div').removeHighlight().highlight($stateParams.searchText);
+      $('#noteContent').removeHighlight().highlight($stateParams.searchText);  
     }, 0)
+    
+    
   });
 
+  $scope.switchNoteArea = function(){
+    $scope.switch = true;
+  }
+
   $scope.updateNote = function(){
+
     notes.updateNote($scope.thisNote).success(function(data){
       $scope.thisNote = data;
+      $scope.switch = false;
+      console.log('this note after update: ' + JSON.stringify($scope.thisNote));
     })
   }
 
