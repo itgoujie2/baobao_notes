@@ -1,6 +1,22 @@
-.highlight { background-color: yellow }
+.highlight { 
+	background-color: yellow;
+	color: black;
+}
 
 #textbox{
-	height: 95vh;
-	width: 100vw;
+	height: 95%;
+	width: 100%;
+}
+
+#searchbox{
+	width: 100%;	
+}
+
+pre{
+	background-color: black;
+	color: white;
+}
+
+body{
+	background-color: pink;
 }

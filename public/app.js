@@ -145,7 +145,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
   
 }]);
 
-app.controller('NoteCtrl', function($scope, $stateParams, notes, comments){
+app.controller('NoteCtrl', function($scope, $stateParams, $state, notes, comments){
   // console.log('hitting NoteCtrl');
   // console.log('note id: ' + $stateParams.id);
   // console.log('search text: ' + $stateParams.searchText);
@@ -191,6 +191,10 @@ app.controller('NoteCtrl', function($scope, $stateParams, notes, comments){
       $scope.comments.unshift(data);
       $scope.newComment = {};
     })
+  }
+
+  $scope.goBack = function(){
+    $state.go('home');
   }
 });
 
