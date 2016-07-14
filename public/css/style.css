@@ -3,20 +3,24 @@
 	color: black;
 }
 
-#textbox{
-	height: 95%;
-	width: 100%;
+#notecontent{
+	height: 90%;
 }
 
-#searchbox{
-	width: 100%;	
+#textbox{
+	height: 90%;
 }
 
 pre{
-	background-color: black;
+	background-color: #34495e;
 	color: white;
 }
 
-body{
+/*.todo-search{
 	background-color: pink;
 }
+
+.btn-primary{
+	background-color: pink;
+}*/
+
