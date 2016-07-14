@@ -16,6 +16,14 @@ pre{
 	color: white;
 }
 
+.todo ul{
+	border-radius: 0 0;
+}
+
+.input-group-btn .btn{
+	color: #34495e;
+}
+
 /*.todo-search{
 	background-color: pink;
 }
