@@ -27,6 +27,20 @@
     </div>
     
     
+    <textarea id="object">
+      Lorem ipsum Laborum sunt anim Duis cupidatat commodo in aute laboris laborum esse. Lorem ipsum Sed dolor in voluptate Excepteur esse in id elit reprehenderit anim. Lorem ipsum Commodo elit anim adipisicing id nulla. Lorem ipsum Aliqua dolore aute ex nostrud nulla tempor veniam Excepteur deserunt velit deserunt. Lorem ipsum Magna dolore nisi magna cupidatat aute cupidatat dolore cillum.
+    </textarea>
+
+    <script type="text/javascript">
+      $("#object").click(function() {
+        scrollToBottom();
+      });
+      function scrollToBottom() {
+        console.log('called ' + JSON.stringify($('#object')));
+        $('#object').scrollTop($('#object')[0].scrollHeight);
+      }
+    </script>
 
   </body>
+
 </html>

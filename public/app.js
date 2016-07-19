@@ -25,7 +25,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
   $scope.searchText = '';
 
   notes.getAll().success(function(data){
-    console.log('get all note: ' + JSON.stringify(data));
+    // console.log('get all note: ' + JSON.stringify(data));
     $scope.notes = $scope.notes.concat(data);
   });
 
@@ -33,7 +33,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
     if (!$scope.newNote.title || $scope.newNote.title === ''){
       return;
     }
-    console.log('newNote: ' + JSON.stringify($scope.newNote));
+    // console.log('newNote: ' + JSON.stringify($scope.newNote));
     notes.saveNote($scope.newNote).success(function(data){
       $scope.notes.unshift(data);
     });
@@ -43,7 +43,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
   $scope.searchFilter = function(){
     return function(item){
       var counter = countOcurrences(item.content, $scope.searchText);
-      console.log('item: ' + JSON.stringify(item) + ' counter: ' + counter);
+      // console.log('item: ' + JSON.stringify(item) + ' counter: ' + counter);
       if (counter > 0){
         console.log('calling 1');
         // return {
@@ -101,7 +101,7 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
     // })
 
     function helper(tracker, array){
-      console.log('tracker: ' + tracker + ' item: ' + JSON.stringify(array[tracker]));
+      // console.log('tracker: ' + tracker + ' item: ' + JSON.stringify(array[tracker]));
 
       if (array[tracker] && array[tracker].content){
         var counter = countOcurrences(array[tracker].content, $scope.searchText);
@@ -124,11 +124,11 @@ app.controller('HomeCtrl', ['$scope', 'notes', function($scope, notes){
       }
       
 
-      console.log('tracker: ' + tracker + ' current result: ' + JSON.stringify(searchResult));
+      // console.log('tracker: ' + tracker + ' current result: ' + JSON.stringify(searchResult));
 
       if (tracker == array.length-1){
         $scope.notes = searchResult;
-        console.log('searchResult: ' + JSON.stringify(searchResult));
+        // console.log('searchResult: ' + JSON.stringify(searchResult));
         // $scope.$apply();
         return;
       }
@@ -169,14 +169,20 @@ app.controller('NoteCtrl', function($scope, $stateParams, $state, notes, comment
 
   $scope.switchNoteArea = function(){
     $scope.switch = true;
+    scrollToBottom();
   }
+
+  function scrollToBottom() {
+    console.log('called ' + JSON.stringify($('#textbox')));
+    $('#textbox').scrollTop($('#textbox')[0].scrollHeight);
+  }  
 
   $scope.updateNote = function(){
 
     notes.updateNote($scope.thisNote).success(function(data){
       $scope.thisNote = data;
       $scope.switch = false;
-      console.log('this note after update: ' + JSON.stringify($scope.thisNote));
+      // console.log('this note after update: ' + JSON.stringify($scope.thisNote));
     })
   }
 
@@ -252,7 +258,7 @@ app.factory('comments', function($http){
 
   o.saveComment = function(comment){
     return $http.post('/comments', comment).success(function(data){
-      console.log('save success: ' + JSON.stringify(data));
+      
       o.comments.unshift(data);
       return data;
     })
