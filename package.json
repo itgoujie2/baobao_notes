@@ -1,16 +1,16 @@
 {
-	"name" : "baobao",
-	"main" : "server.js",
-	"scripts" : {
-		"start" : "node server.js"
-	},
-	"dependencies" : {
-		"express" : "latest",
-		"mongoose" : "latest",
-		"winston" : "latest",
-		"body-parser" : "latest"
-	},
-	"engines" : {
-		"node" : "latest"
-	}
+  "name": "baobao",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "mongoose": "latest",
+    "winston": "latest"
+  },
+  "engines": {
+    "node": "latest"
+  }
 }

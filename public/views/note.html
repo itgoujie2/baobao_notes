@@ -1,6 +1,6 @@
 <form class="form-group">
 	<div><pre id="noteContent" ng-click="switchNoteArea()" ng-if="!switch">{{thisNote.content}}</pre></div>
-	<textarea ng-if="switch" ng-model="thisNote.content" id="textbox" class="form-control"></textarea>
+	<textarea show-tail ng-if="switch" ng-model="thisNote.content" id="textbox" class="form-control"></textarea>
 	<button ng-click="updateNote()" ng-if="switch" class="btn btn-primary">update</button>
 	<button ng-click="goBack()" class="btn btn-primary">back</button>
 </form>
